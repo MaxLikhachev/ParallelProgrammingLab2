@@ -20,10 +20,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\Downloads\ParallelProgrammingLab1-master\.gitattributes" />
-    <None Include="..\..\..\Downloads\ParallelProgrammingLab1-master\.gitignore" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="..\..\..\Downloads\ParallelProgrammingLab1-master\Analyser.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -42,16 +38,23 @@
     <ClInclude Include="..\..\..\Downloads\ParallelProgrammingLab1-master\TestTypes.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\..\..\Downloads\ParallelProgrammingLab1-master\demo.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\..\..\Downloads\ParallelProgrammingLab1-master\Screenshot_1.png">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-    <Image Include="..\..\..\Downloads\ParallelProgrammingLab1-master\Screenshot_2.png">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
+    <ClInclude Include="Analyser.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Calculator.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Display.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Test.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="TestTypes.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
