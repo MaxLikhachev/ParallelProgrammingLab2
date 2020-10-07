@@ -33,9 +33,6 @@
     <ClInclude Include="..\..\..\Downloads\ParallelProgrammingLab1-master\Display.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Downloads\ParallelProgrammingLab1-master\Formula.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Downloads\ParallelProgrammingLab1-master\Random.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>

@@ -149,7 +149,6 @@
     <ClInclude Include="..\..\..\Downloads\ParallelProgrammingLab1-master\Analyser.h" />
     <ClInclude Include="..\..\..\Downloads\ParallelProgrammingLab1-master\Calculator.h" />
     <ClInclude Include="..\..\..\Downloads\ParallelProgrammingLab1-master\Display.h" />
-    <ClInclude Include="..\..\..\Downloads\ParallelProgrammingLab1-master\Formula.h" />
     <ClInclude Include="..\..\..\Downloads\ParallelProgrammingLab1-master\Random.h" />
     <ClInclude Include="..\..\..\Downloads\ParallelProgrammingLab1-master\Test.h" />
     <ClInclude Include="..\..\..\Downloads\ParallelProgrammingLab1-master\TestTypes.h" />
