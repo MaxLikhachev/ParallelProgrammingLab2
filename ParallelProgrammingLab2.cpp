@@ -18,6 +18,7 @@ int main()
     cout << "Generating array...\n";
     vector<vector<double>> array(size, vector<double>(size, 0.0));
     array = random(size, 0.0, 100.0);
+    display(array);
     cout << "Array generated\n\n";
 
     int count = 0;

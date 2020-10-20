@@ -54,3 +54,20 @@ T averageDeviationCalculate(vector<vector<T>> array, vector<T> result)
 
 	return controlSum / controlCounter;
 }
+// Проверка корректности решения методом подстановки
+template <typename T>
+bool check(vector<vector<T>> array, vector<T> result)
+{
+	int size = array.size();
+	bool flag = true;
+	for (int i = 0; i < size; i++)
+	{
+		T sum = 0.0;
+		for (int j = 0; j < size; j++)
+			sum += array[i][j] * result[j];
+		if (sum != array[i][size])
+			flag = false;
+		cout << "Checking [" << i << "] : calculated: " << sum << " expected: " << array[i][size] << endl;
+	}
+	return flag;
+}

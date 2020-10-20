@@ -30,6 +30,8 @@ double test(vector<vector<T>> array, TestTypes type) {
         cout << result[i] << " ";
     cout << endl;
 
+    cout << check(array, result);
+
     return time;
 }
 
