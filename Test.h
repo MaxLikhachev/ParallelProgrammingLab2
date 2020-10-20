@@ -22,9 +22,13 @@ double test(vector<vector<T>> array, TestTypes type) {
 
     double end = omp_get_wtime(), time = (end - start) * 1000;
 
-    // Для проверок каждого теста 
     if (averageDeviationCalculate(array, result) != 0.0)
-        cout << "ERROR: arrayC not correct";
+        cout << "ERROR: solution not correct";
+
+    cout << "Solution: ";
+    for (int i = 0; i < result.size(); i++)
+        cout << result[i] << " ";
+    cout << endl;
 
     return time;
 }

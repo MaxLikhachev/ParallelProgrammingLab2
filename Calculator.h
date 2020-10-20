@@ -28,7 +28,6 @@ vector<T> sequentialCalculate(vector<vector<T>> array)
 				if (j == i)
 					j++;
 				temp[i] += array[i][j] / array[i][i] * result[i];
-
 			}
 			temp[i] = array[i][size] / array[i][i] - temp[i];
 		}
