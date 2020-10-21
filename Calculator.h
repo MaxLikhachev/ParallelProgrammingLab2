@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const double accuracy = 0.5;
+const double accuracy = 0.05;
 // Последовательный метод
 template <typename T>
 vector<T> sequentialCalculate(vector<vector<T>> array)

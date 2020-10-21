@@ -5,6 +5,7 @@
 #include "Display.h"
 #include "Test.h"
 #include "TestTypes.h"
+#include "TestMethod.h"
 
 using namespace std;
 
@@ -28,4 +29,6 @@ int main()
 
     vector<TestTypes> types = { TestTypes::SEQUENTIAL};
     tests(array, types, count);
+
+    Iter(0.0);
 }

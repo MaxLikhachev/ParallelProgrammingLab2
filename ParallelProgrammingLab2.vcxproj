@@ -142,6 +142,7 @@
     <ClInclude Include="Analyser.h" />
     <ClInclude Include="Calculator.h" />
     <ClInclude Include="Display.h" />
+    <ClInclude Include="TestMethod.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Test.h" />
     <ClInclude Include="TestTypes.h" />
