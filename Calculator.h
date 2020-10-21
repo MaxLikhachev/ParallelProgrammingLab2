@@ -7,67 +7,79 @@
 using namespace std;
 
 const double accuracy = 0.05;
+const double eps = 0.0000000000001;
+
+template <typename T>
+bool IsDiagonalDominanceBroken(vector<vector<T>> a)
+{
+    bool flag = true;
+    int size = a.size();
+    for (int i = 0; i < size && flag; i++)
+    {
+        T fabsSum = 0.0;
+        for (int j = 0; j < size; j++)
+            if (i != j)
+                fabsSum += fabs(a[i][j]);
+        flag = fabs(a[i][i]) <= fabsSum;
+    }
+    return flag;
+}
+
+template <typename T>
+bool IsDiverged(vector<T> x, vector<T> xn, T eps)
+{
+    bool flag = true;
+    int size = x.size();
+    for (int i = 0; i < size && flag; i++)
+        flag = fabs(xn[i] - x[i]) < eps;
+    return flag;
+}
+
 // ѕоследовательный метод
 template <typename T>
-vector<T> sequentialCalculate(vector<vector<T>> array)
+vector<T> sequentialCalculate(vector<vector<T>> a)
 {
-	int size = array.size();
-	vector<T> result(size, 0.0);
-	for (int i = 0; i < size; i++)
-		result[i] = array[i][size] / array[i][i];
-	bool flag = true;
+	int size = a.size();
+    vector<T> x(size, 0.0);
+    vector<T> xn(size, 0.0);
 
-	for (int k = 0; flag; k++)
-	{
-		vector<T> temp = result;
+    int count = 0;
+    // for (bool flag = !IsDiagonalDominanceBroken(a); flag; count++)
+    for (bool flag = true; flag; count++)
+    {
+        for (int i = 0; i < size; i++)
+        {
+            T sum = 0.0;
+            for (int j = 0; j < size; j++)
+                if (i != j)
+                    sum += a[i][j] * x[j];
+            xn[i] = (a[i][size] - sum) / a[i][i];
+        }
+        flag = !IsDiverged(x, xn, eps);
+        if (flag)
+            for (int i = 0; i < size; i++)
+                x[i] = xn[i];
+    }
 
-		for (int i = 0; i < size; i++)
-		{
-			for (int j = 0; j < size; j++)
-			{
-				if (j == i)
-					j++;
-				temp[i] += array[i][j] / array[i][i] * result[i];
-			}
-			temp[i] = array[i][size] / array[i][i] - temp[i];
-		}
-
-		for (int i = 0; i < size; i++)
-			if (abs(temp[i] - result[i]) > accuracy)
-				flag = false;
-		result = temp;
-	}
-	return result;
+    cout << "Iterations count = " << count << endl;
+    for (int i = 0; i < size; i++)
+        cout << " x[" << i << "] = " << x[i];
+    cout << endl;
+    return x;
 }
 // ѕроверка отклонений значений от последовательного вычислени€
 template <typename T>
 T averageDeviationCalculate(vector<vector<T>> array, vector<T> result)
 {
-	int size = array.size();
-	T controlSum = 0.0;
-	int controlCounter = 0;
-	vector<T>controlArray(size, 0.0);
-	controlArray = sequentialCalculate(array);
-
-	for (int i = 0; i < size; i++, controlCounter++)
-		controlSum += controlArray[i] - result[i];
-
-	return controlSum / controlCounter;
-}
-// ѕроверка корректности решени€ методом подстановки
-template <typename T>
-bool check(vector<vector<T>> array, vector<T> result)
-{
-	int size = array.size();
-	bool flag = true;
-	for (int i = 0; i < size; i++)
-	{
-		T sum = 0.0;
-		for (int j = 0; j < size; j++)
-			sum += array[i][j] * result[j];
-		if (sum != array[i][size])
-			flag = false;
-		cout << "Checking [" << i << "] : calculated: " << sum << " expected: " << array[i][size] << endl;
-	}
-	return flag;
+    int size = array.size();
+    bool flag = true;
+    for (int i = 0; i < size; i++)
+    {
+        T sum = 0.0;
+        for (int j = 0; j < size; j++)
+            sum += array[i][j] * result[j];
+        flag = sum == array[i][size];
+        cout << "Checking [" << i << "] : calculated: " << sum << " expected: " << array[i][size] << endl;
+    }
+    return flag;
 }

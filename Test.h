@@ -3,7 +3,6 @@
 #include <vector>
 #include <omp.h>
 
-#include "Random.h"
 #include "Calculator.h" 
 #include "TestTypes.h"
 #include "Analyser.h"
@@ -30,7 +29,7 @@ double test(vector<vector<T>> array, TestTypes type) {
         cout << result[i] << " ";
     cout << endl;
 
-    cout << check(array, result);
+    cout << averageDeviationCalculate(array, result);
 
     return time;
 }

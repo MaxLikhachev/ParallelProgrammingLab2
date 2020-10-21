@@ -143,7 +143,7 @@
     <ClInclude Include="Calculator.h" />
     <ClInclude Include="Display.h" />
     <ClInclude Include="TestMethod.h" />
-    <ClInclude Include="Random.h" />
+    <ClInclude Include="Init.h" />
     <ClInclude Include="Test.h" />
     <ClInclude Include="TestTypes.h" />
   </ItemGroup>
