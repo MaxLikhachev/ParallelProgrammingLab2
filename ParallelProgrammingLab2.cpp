@@ -13,20 +13,18 @@ int main()
 {
     int size = 0;
 
-    cout << "Enter arrays size:\n";
+    cout << "Matrix size: ";
     cin >> size;
-    cout << "Arrays size: " << size << endl << endl;
 
-    cout << "Generating array...\n";
-    vector<vector<double>> array(size, vector<double>(size, 0.0));
-    array = init(size, -100.0, 100.0);
-    cout << "Array generated\n";
+    cout << "Generate matrix... ";
+    vector<vector<double>> matrix(size, vector<double>(size, 0.0));
+    matrix = init(size, -100.0, 100.0);
+    cout << "successfully\n";
     
     int count = 0;
-    cout << "Enter tests count:\n";
+    cout << "Tests count: ";
     cin >> count;
-    cout << "Tests count: " << count << endl << endl;
 
     vector<TestTypes> types = { TestTypes::SEQUENTIAL};
-    tests(array, types, count);
+    tests(matrix, types, count);
 }

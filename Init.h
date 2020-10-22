@@ -16,22 +16,22 @@ vector<vector<T>> init(int depth, T min, T max)
 	uniform_int_distribution<> distribution(min, max);
 
 	int width = depth + 1;
-	vector<vector<T>>array(depth, vector<T>(width, 0.0));
+	vector<vector<T>>matrix(depth, vector<T>(width, 0.0));
 	vector<T>solution(depth, 0.0);
 
 	
 	for (int i = 0; i < depth; i++)
 		for (int j = 0; j < depth; j++)
-			array[i][j] = distribution(rand);
+			matrix[i][j] = distribution(rand);
 
 	for (int i = 0; i < depth; i++)
 	{
 		int fabsSum = 0;
 		for (int j = 0; j < depth; j++)
 			if (j != i)
-				fabsSum += fabs(array[i][j]);
-		while(fabs(array[i][i]) < fabsSum)
-			array[i][i] += distribution(rand);
+				fabsSum += fabs(matrix[i][j]);
+		while(fabs(matrix[i][i]) < fabsSum)
+			matrix[i][i] += distribution(rand);
 	}
 		
 	for (int i = 0; i < depth; i++)
@@ -41,11 +41,8 @@ vector<vector<T>> init(int depth, T min, T max)
 	{
 		double sum = 0.0;
 		for (int j = 0; j < depth; j++)
-			sum += array[i][j] * solution[j];
-		array[i][depth] = sum;
+			sum += matrix[i][j] * solution[j];
+		matrix[i][depth] = sum;
 	}
-
-	display(array);
-
-	return array;
+	return matrix;
 }

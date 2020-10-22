@@ -1,5 +1,8 @@
 #pragma once
 #include <string>
+#include <iostream>
+
+using namespace std;
 
 enum class TestTypes
 {
@@ -7,11 +10,11 @@ enum class TestTypes
 };
 
 template<typename T>
-string getTestType(T index)
+void getTestType(T index)
 {
     switch (index)
     {
-    case TestTypes::SEQUENTIAL: return "Sequential method"; break;
-    default: return "Unknown method";
+    case TestTypes::SEQUENTIAL: cout << "Sequential method"; break;
+    default: cout << "Unknown method";
     }
 }
