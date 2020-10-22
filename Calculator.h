@@ -44,8 +44,8 @@ vector<T> sequentialCalculate(vector<vector<T>> a)
     vector<T> xn(size, 0.0);
 
     int count = 0;
-    // for (bool flag = !IsDiagonalDominanceBroken(a); flag; count++)
-    for (bool flag = true; flag; count++)
+    for (bool flag = !IsDiagonalDominanceBroken(a); flag; count++)
+    //for (bool flag = true; flag; count++)
     {
         for (int i = 0; i < size; i++)
         {
