@@ -42,6 +42,6 @@ int main()
     cout << "Tests count: ";
     cin >> count;
 
-    vector<TestTypes> types = { TestTypes::SEQUENTIAL, TestTypes::PARALLEL_CYCLES };
+    vector<TestTypes> types = { TestTypes::SEQUENTIAL, TestTypes::PARALLEL_CYCLES, TestTypes::PARALLEL_SECTIONS, TestTypes::PARALLEL_ALGORITHM };
     tests(matrix, types, count);
 }
