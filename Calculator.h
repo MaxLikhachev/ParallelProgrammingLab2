@@ -65,7 +65,6 @@ vector<T> parallelAlgorithmCalculate(vector<vector<T>> matrix)
         }
     }
     globalCount = count;
-    // cout << "iterations count = " << count << " ";
     return result;
 }
 
@@ -106,7 +105,6 @@ vector<T> parallelSectionsCalculate(vector<vector<T>> matrix)
         }
     }
     globalCount = count;
-    // cout << "iterations count = " << count << " ";
     return result;
 }
 
@@ -140,7 +138,6 @@ vector<T> parallelCyclesCalculate(vector<vector<T>> matrix)
         } 
     }
     globalCount = count;
-    // cout << "iterations count = " << count << " ";
     return result;
 }
 
@@ -168,7 +165,6 @@ vector<T> sequentialCalculate(vector<vector<T>> matrix)
                 result[i] = temp[i];
     }
     globalCount = count;
-    // cout << "iterations count = " << count << " ";
     return result;
 }
 // Проверка отклонений значений от последовательного вычисления
