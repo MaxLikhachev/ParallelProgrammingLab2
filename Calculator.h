@@ -35,7 +35,7 @@ bool isDiverged(vector<T> result, vector<T> temp, T eps)
     return flag;
 }
 
-// Mетод распараллеливания с использованием параллельных циклов
+// Mетод распараллеливания с использованием алгоритма
 template <typename T>
 vector<T> parallelAlgorithmCalculate(vector<vector<T>> matrix)
 {
@@ -45,24 +45,23 @@ vector<T> parallelAlgorithmCalculate(vector<vector<T>> matrix)
     int count = 0;
     for (bool flag = !isDiagonalDominanceBroken(matrix); flag; count++)
     {
-#pragma omp parallel shared(matrix) private(i, size)
+#pragma omp parallel for
+        for (int i = 0; i < size; i++)
         {
-#pragma omp for
-            for (int i = 0; i < size; i++)
+            T sum = 0.0;
             {
-                T sum = 0.0;
-#pragma omp for
+#pragma omp parallel for
                 for (int j = 0; j < size; j++)
                     if (i != j)
                         sum += matrix[i][j] * result[j];
                 temp[i] = (matrix[i][size] - sum) / matrix[i][i];
             }
-            flag = !isDiverged(result, temp, eps);
-            if (flag)
-#pragma omp for
-                for (int i = 0; i < size; i++)
-                    result[i] = temp[i];
         }
+        flag = !isDiverged(result, temp, eps);
+        if (flag)
+#pragma omp for
+        for (int i = 0; i < size; i++)
+            result[i] = temp[i];
     }
     globalCount = count;
     return result;
@@ -78,29 +77,26 @@ vector<T> parallelSectionsCalculate(vector<vector<T>> matrix)
     int count = 0;
     for (bool flag = !isDiagonalDominanceBroken(matrix); flag; count++)
     {
-#pragma omp parallel shared(matrix) private(i, size)
-        {
 #pragma omp sections
+        {
+#pragma omp section
             {
-#pragma omp section
+                for (int i = 0; i < size; i++)
                 {
+                    T sum = 0.0;
+                    
+                    for (int j = 0; j < size; j++)
+                        if (i != j)
+                            sum += matrix[i][j] * result[j];
+                       temp[i] = (matrix[i][size] - sum) / matrix[i][i];
+                }
+            }
+#pragma omp section
+            {
+                flag = !isDiverged(result, temp, eps);
+                if (flag)
                     for (int i = 0; i < size; i++)
-                    {
-                        T sum = 0.0;
-
-                        for (int j = 0; j < size; j++)
-                            if (i != j)
-                                sum += matrix[i][j] * result[j];
-                        temp[i] = (matrix[i][size] - sum) / matrix[i][i];
-                    }
-                }
-#pragma omp section
-                {
-                    flag = !isDiverged(result, temp, eps);
-                    if (flag)
-                        for (int i = 0; i < size; i++)
-                            result[i] = temp[i];
-                }
+                        result[i] = temp[i];
             }
         }
     }
@@ -118,24 +114,23 @@ vector<T> parallelCyclesCalculate(vector<vector<T>> matrix)
     int count = 0;
     for (bool flag = !isDiagonalDominanceBroken(matrix); flag; count++)
     {
-#pragma omp parallel shared(matrix) private(i, size)
+#pragma omp parallel for
+        for (int i = 0; i < size; i++)
         {
-#pragma omp for
-            for (int i = 0; i < size; i++)
+            T sum = 0.0;
             {
-                T sum = 0.0;
-#pragma omp for
+#pragma omp parallel for
                 for (int j = 0; j < size; j++)
                     if (i != j)
                         sum += matrix[i][j] * result[j];
                 temp[i] = (matrix[i][size] - sum) / matrix[i][i];
             }
-            flag = !isDiverged(result, temp, eps);
-            if (flag)
-#pragma omp for
-                for (int i = 0; i < size; i++)
-                    result[i] = temp[i];
-        } 
+        }
+        flag = !isDiverged(result, temp, eps);
+        if (flag)
+#pragma omp parallel for
+        for (int i = 0; i < size; i++)
+            result[i] = temp[i];
     }
     globalCount = count;
     return result;
