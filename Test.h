@@ -16,10 +16,12 @@ double test(vector<vector<T>> matrix, TestTypes type) {
     switch (type)
     {
     case TestTypes::SEQUENTIAL: result = sequentialCalculate(matrix); break;
+    case TestTypes::PARALLEL_CYCLES: result = parallelCyclesCalculate(matrix); break;
     default: break;
     }
     double end = omp_get_wtime(), time = (end - start) * 1000;
-    cout << " deviage: " << averageDeviationCalculate(matrix, result) << " ";
+    // Deviation for test
+    // cout << " deviage: " << averageDeviationCalculate(matrix, result) << " ";
     return time;
 }
 
