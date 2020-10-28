@@ -81,6 +81,7 @@ vector<T> parallelSectionsCalculate(vector<vector<T>> matrix)
         {
 #pragma omp section
             {
+#pragma omp parallel for
                 for (int i = 0; i < size; i++)
                 {
                     T sum = 0.0;
